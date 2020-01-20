@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<input type="button" name="name" value="Click" id="btnClicked" />
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#btnClicked").click(function () {
+                //alert("Clicked");
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:54474/Server.svc/Samp',                    
+                }).done(function (data) {
+                    alert("Data Loaded: " + data);
+                }).fail(function () {
+                    alert("error");
+                }).always(function () {
+                    //alert("finished");
+                });
+            });
+        });
+    </script>
+}
